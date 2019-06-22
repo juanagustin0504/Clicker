@@ -88,6 +88,12 @@ public class DataController : MonoBehaviour
         itemButton.level = PlayerPrefs.GetInt(key + "_level");
         itemButton.currentCost = PlayerPrefs.GetInt(key + "_cost");
         itemButton.goldPerSec = PlayerPrefs.GetInt(key + "_goldPerSec");
+        
+        if(PlayerPrefs.GetInt(key + "_isPurchased") == 1) {
+            itemButton.isPurchased = true;
+        } else {
+            itemButton.isPurchased = false;
+        }
     }
 
     public void SaveItemButton(ItemButton itemButton) {
@@ -96,6 +102,12 @@ public class DataController : MonoBehaviour
         PlayerPrefs.SetInt(key + "_level", itemButton.level);
         PlayerPrefs.SetInt(key + "_cost", itemButton.currentCost);
         PlayerPrefs.SetInt(key + "_goldPerSec", itemButton.goldPerSec);
+
+        if(itemButton.isPurchased) {
+            PlayerPrefs.SetInt(key + "_isPurchased", 1);
+        } else {
+            PlayerPrefs.SetInt(key + "_isPurchased", 0);
+        }
     }
 
 }
